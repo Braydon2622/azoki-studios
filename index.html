@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Azoki Studios | Live wallpapers and small games</title>
+<meta name="description" content="Azoki Studios makes live wallpapers, small games and other digital things. Home of Code Sea, Hearthside and Desktop Reef.">
+<meta property="og:title" content="Azoki Studios">
+<meta property="og:description" content="Worlds that live behind your icons. Live wallpapers, small games and other digital things.">
+<meta property="og:image" content="assets/codesea-cover-whale.jpg">
+<meta name="theme-color" content="#04070d">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/studios.css">
+</head>
+<body>
+<a class="skip" href="#work">Skip to the work</a>
+
+<header class="nav" id="nav">
+  <a class="logo" href="index.html" aria-label="Azoki Studios, home">AZ<span class="o" aria-hidden="true"></span>KI<em>studios</em></a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#work">Work</a>
+    <a href="#scenes">Scenes</a>
+    <a href="#bench">Workbench</a>
+    <a href="#about">About</a>
+  </nav>
+  <div class="switch" role="group" aria-label="Azoki sites">
+    <span class="on" aria-current="page">Studios</span>
+    <a data-sibling="market" href="https://azokimarket.com">Market</a>
+  </div>
+</header>
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <canvas id="sea" aria-hidden="true"></canvas>
+  <div class="hero-shade" aria-hidden="true"></div>
+  <div class="hero-copy">
+    <p class="eyebrow">Azoki Studios <span>/</span> live wallpapers <span>/</span> small games <span>/</span> digital things</p>
+    <h1>Worlds that live<br>behind your <span class="glow">icons.</span></h1>
+    <p class="hero-sub">An ocean made of text. A village that moves out of your way. A reef that grows round your files. Made by one person, for the screen you look at all day.</p>
+    <div class="hero-cta">
+      <a class="btn solid" href="#work">See the work</a>
+      <a class="btn ghost" href="work.html?id=codesea">Code Sea <span class="price">$1</span></a>
+    </div>
+  </div>
+  <p class="hero-hint" aria-hidden="true"><span class="k">&gt;&lt;&gt;</span> rest your cursor on the water and the fish get fed. move it and they bolt.</p>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>LIVE WALLPAPERS</span><i>&gt;&lt;&gt;</i><span>SMALL GAMES</span><i>~~~</i><span>CODE SEA</span><i>&lt;&gt;&lt;</i><span>HEARTHSIDE</span><i>~~~</i><span>DESKTOP REEF</span><i>&gt;&lt;&gt;</i><span>DIGITAL THINGS</span><i>~~~</i>
+    <span>LIVE WALLPAPERS</span><i>&gt;&lt;&gt;</i><span>SMALL GAMES</span><i>~~~</i><span>CODE SEA</span><i>&lt;&gt;&lt;</i><span>HEARTHSIDE</span><i>~~~</i><span>DESKTOP REEF</span><i>&gt;&lt;&gt;</i><span>DIGITAL THINGS</span><i>~~~</i>
+  </div>
+</div>
+
+<!-- ============ WORK ============ -->
+<section class="work" id="work">
+  <div class="sec-head reveal">
+    <p class="label">[ work ]</p>
+    <h2>Three wallpapers that know where your icons are.</h2>
+  </div>
+
+  <!-- Code Sea -->
+  <article class="piece reveal" style="--accent:#6fe7ff" id="codesea">
+    <div class="piece-info">
+      <p class="piece-no">01 <span>live wallpaper</span></p>
+      <h3>Code Sea</h3>
+      <p class="piece-tag">A living ocean behind your desktop icons, drawn entirely in text.</p>
+      <p class="piece-body">Every creature is a 3D model rasterised into monospace characters, every frame. Jellyfish pulse and rise, a school of hundreds flows and flashes, sharks hunt, and a whale rises out of the dark and fills the screen.</p>
+      <p class="whale-clock" id="whaleClock" aria-live="off"></p>
+      <dl class="meta">
+        <div><dt>Status</dt><dd><span class="dot live"></span>Released, v1.0.0</dd></div>
+        <div><dt>Runs on</dt><dd>Windows 10 &amp; 11, macOS soon</dd></div>
+        <div><dt>Price</dt><dd>$1</dd></div>
+      </dl>
+      <div class="piece-cta">
+        <a class="btn solid" data-link="codeseaBuy" href="work.html?id=codesea">Get it for $1</a>
+        <a class="btn text" href="work.html?id=codesea">Read more <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </div>
+    <div class="piece-show">
+      <div class="screen" data-tabs>
+        <img class="on" src="assets/codesea-open-day.jpg" alt="Code Sea, open water: reef fish over a text reef, behind desktop icons" loading="lazy" width="1600" height="900">
+        <img src="assets/codesea-school-shark-day.jpg" alt="Code Sea: a great white shark hunting through a school of fish" loading="lazy" width="1600" height="900">
+        <img src="assets/codesea-bloom-day.jpg" alt="Code Sea: jellyfish of every size rising from the deep" loading="lazy" width="1600" height="900">
+        <img src="assets/codesea-deep-night.jpg" alt="Code Sea: the deep at night with glowing plankton" loading="lazy" width="1600" height="900">
+        <img src="assets/codesea-whale-rise-day.jpg" alt="Code Sea: a humpback whale made of letters rising across the screen" loading="lazy" width="1600" height="900">
+      </div>
+      <div class="tabs" role="tablist" aria-label="Code Sea scenes">
+        <button role="tab" aria-selected="true">Open water</button>
+        <button role="tab" aria-selected="false">The school</button>
+        <button role="tab" aria-selected="false">Jelly bloom</button>
+        <button role="tab" aria-selected="false">The deep</button>
+        <button role="tab" aria-selected="false">The whale</button>
+      </div>
+    </div>
+  </article>
+
+  <!-- Hearthside -->
+  <article class="piece flip reveal" style="--accent:#ffa24d" id="hearthside">
+    <div class="piece-info">
+      <p class="piece-no">02 <span>live wallpaper</span></p>
+      <h3>Hearthside</h3>
+      <p class="piece-tag">A hand-painted village that rearranges itself around your icons.</p>
+      <p class="piece-body">Icons get open plazas under them, houses and trees step aside, paths link groups of icons, and villagers, a cat and a dog stroll the lanes. Drag an icon and the ground ripples out from where you dropped it.</p>
+      <dl class="meta">
+        <div><dt>Status</dt><dd><span class="dot demo"></span>Playable in the browser</dd></div>
+        <div><dt>Runs on</dt><dd>Windows 10 &amp; 11</dd></div>
+        <div><dt>Cost</dt><dd>5 to 9% of one CPU core</dd></div>
+      </dl>
+      <div class="piece-cta">
+        <a class="btn solid" href="https://braydon2622.github.io/hearthside/" target="_blank" rel="noopener">Try the demo</a>
+        <a class="btn text" href="work.html?id=hearthside">Read more <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </div>
+    <div class="piece-show">
+      <div class="screen" id="daylight">
+        <img class="on" src="assets/hearthside-noon.jpg" alt="Hearthside at noon: a painted village seen from above, with plazas under the desktop icons" loading="lazy" width="1600" height="900">
+        <img src="assets/hearthside-sunset.jpg" alt="Hearthside at sunset" loading="lazy" width="1600" height="900">
+        <img src="assets/hearthside-night.jpg" alt="Hearthside at night" loading="lazy" width="1600" height="900">
+      </div>
+      <label class="dial">
+        <span class="dial-time" id="dialTime">12:00</span>
+        <input type="range" id="dial" min="12" max="24" step="0.05" value="12" aria-label="Time of day in the village">
+        <span class="dial-ends"><i>noon</i><i>sunset</i><i>night</i></span>
+      </label>
+    </div>
+  </article>
+
+  <!-- Desktop Reef -->
+  <article class="piece reveal" style="--accent:#3fe6cf" id="desktop-reef">
+    <div class="piece-info">
+      <p class="piece-no">03 <span>live wallpaper</span></p>
+      <h3>Desktop Reef</h3>
+      <p class="piece-tag">A living tropical reef that grows around your desktop icons.</p>
+      <p class="piece-body">The bright one. Your icons sit on islands of sand ringed with palms; coral gardens grow in the shallows between them while fish, an octopus and the odd kayak go about their day.</p>
+      <dl class="meta">
+        <div><dt>Status</dt><dd><span class="dot wip"></span>In development, v0.1.0</dd></div>
+        <div><dt>Runs on</dt><dd>Windows</dd></div>
+      </dl>
+      <div class="piece-cta">
+        <a class="btn solid" href="#bench">Tell me when it ships</a>
+        <a class="btn text" href="work.html?id=desktop-reef">Read more <span aria-hidden="true">-&gt;</span></a>
+      </div>
+    </div>
+    <div class="piece-show">
+      <div class="screen pan" id="reefPan">
+        <img class="on" src="assets/reef-wide.jpg" alt="Desktop Reef: bright coral gardens in turquoise shallows, seen from above" loading="lazy" width="1500" height="620">
+      </div>
+      <p class="caption">move across the picture to look around the lagoon</p>
+    </div>
+  </article>
+</section>
+
+<!-- ============ PRINCIPLES ============ -->
+<section class="rules" id="about">
+  <div class="sec-head reveal">
+    <p class="label">[ about ]</p>
+    <h2>A wallpaper should be the best-behaved thing on your computer.</h2>
+    <p class="sec-sub">Azoki Studios is one person making things for the desktop. Every one of them follows the same three rules.</p>
+  </div>
+  <div class="rule-grid">
+    <div class="rule reveal">
+      <pre aria-hidden="true">  [ ]   [ ]
+   \     /
+ ~~~ &gt;&lt;&gt; ~~~</pre>
+      <h3>Know where the icons are</h3>
+      <p>The village opens a plaza under each one. The fish swim round them. Nothing is ever drawn brighter than a label.</p>
+    </div>
+    <div class="rule reveal">
+      <pre aria-hidden="true">  cpu
+  |_________
+  |__.-._____
+  0%      100%</pre>
+      <h3>Cost almost nothing</h3>
+      <p>Hearthside takes 5 to 9% of one core while it moves and under 1% when a window covers it. Code Sea pauses itself the moment you start working.</p>
+    </div>
+    <div class="rule reveal">
+      <pre aria-hidden="true">   \ | /
+  -- O --   12:00
+   / | \    -&gt; 18:36
+    (       -&gt; 23:00</pre>
+      <h3>Notice the world</h3>
+      <p>The light follows your real clock: warm at sunrise, moonlit at night. The whale comes at the top of every hour. Your mouse is part of it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCENES ============ -->
+<section class="scenes" id="scenes">
+  <div class="sec-head reveal">
+    <p class="label">[ scenes ]</p>
+    <h2>Stills from things that never sit still.</h2>
+  </div>
+  <div class="reel" id="reel" tabindex="0" aria-label="Gallery of scenes. Scroll sideways.">
+    <button class="shot" data-full="assets/codesea-cover-whale.jpg"><img src="assets/codesea-cover-whale.jpg" alt="The whale, close" loading="lazy"><span>Code Sea <b>the whale, close</b></span></button>
+    <button class="shot wide" data-full="assets/hearthside-sunset.jpg"><img src="assets/hearthside-sunset.jpg" alt="Hearthside at sunset" loading="lazy"><span>Hearthside <b>18:36</b></span></button>
+    <button class="shot" data-full="assets/codesea-cover-school.jpg"><img src="assets/codesea-cover-school.jpg" alt="A hammerhead over the reef" loading="lazy"><span>Code Sea <b>the hammerhead</b></span></button>
+    <button class="shot wide" data-full="assets/reef-wide.jpg"><img src="assets/reef-wide.jpg" alt="Desktop Reef shallows" loading="lazy"><span>Desktop Reef <b>the shallows</b></span></button>
+    <button class="shot wide" data-full="assets/codesea-dolphins-night.jpg"><img src="assets/codesea-dolphins-night.jpg" alt="Dolphins at night" loading="lazy"><span>Code Sea <b>dolphins, 23:00</b></span></button>
+    <button class="shot wide" data-full="assets/hearthside-night.jpg"><img src="assets/hearthside-night.jpg" alt="Hearthside at night" loading="lazy"><span>Hearthside <b>lamps lit</b></span></button>
+    <button class="shot wide" data-full="assets/codesea-glow-bloom-night.jpg"><img src="assets/codesea-glow-bloom-night.jpg" alt="A glowing plankton bloom" loading="lazy"><span>Code Sea <b>a glowing bloom</b></span></button>
+    <button class="shot wide" data-full="assets/hearthside-fill-noon.jpg"><img src="assets/hearthside-fill-noon.jpg" alt="Hearthside with a crowded desktop" loading="lazy"><span>Hearthside <b>a full desktop</b></span></button>
+  </div>
+</section>
+
+<!-- ============ MARKET ============ -->
+<section class="tomarket reveal">
+  <div class="tm-art" aria-hidden="true">
+    <div class="tm-frame"><img src="assets/codesea-cover-whale.jpg" alt="" loading="lazy"></div>
+  </div>
+  <div class="tm-copy">
+    <p class="label">[ azoki market ]</p>
+    <h2>Want one on the wall?</h2>
+    <p>The same worlds as prints, tapestries and glow boxes, plus the other physical things Azoki makes.</p>
+    <a class="btn ink" data-sibling="market" href="https://azokimarket.com">Visit Azoki Market <span aria-hidden="true">-&gt;</span></a>
+  </div>
+</section>
+
+<!-- ============ WORKBENCH ============ -->
+<section class="bench" id="bench">
+  <div class="sec-head reveal">
+    <p class="label">[ workbench ]</p>
+    <h2>What is out, and what is still on the bench.</h2>
+  </div>
+  <div class="bench-grid">
+    <div class="board reveal" role="table" aria-label="Project status">
+      <div class="row head" role="row"><span role="columnheader">project</span><span role="columnheader">kind</span><span role="columnheader">version</span><span role="columnheader">status</span></div>
+      <a class="row" role="row" href="work.html?id=codesea"><span role="cell">Code Sea</span><span role="cell">wallpaper</span><span role="cell">1.0.0</span><span role="cell"><i class="dot live"></i>released</span></a>
+      <a class="row" role="row" href="work.html?id=hearthside"><span role="cell">Hearthside</span><span role="cell">wallpaper</span><span role="cell">2</span><span role="cell"><i class="dot demo"></i>browser demo</span></a>
+      <a class="row" role="row" href="work.html?id=desktop-reef"><span role="cell">Desktop Reef</span><span role="cell">wallpaper</span><span role="cell">0.1.0</span><span role="cell"><i class="dot wip"></i>in development</span></a>
+      <div class="row dim" role="row"><span role="cell">Games</span><span role="cell">game</span><span role="cell">--</span><span role="cell"><i class="dot idle"></i>on the bench</span></div>
+      <div class="row dim" role="row"><span role="cell">Code Sea for Mac</span><span role="cell">port</span><span role="cell">--</span><span role="cell"><i class="dot wip"></i>being tested</span></div>
+    </div>
+    <form class="signup reveal" name="studio-news" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="studio-news">
+      <p hidden><label>Leave this empty <input name="bot-field"></label></p>
+      <h3>Hear when something ships.</h3>
+      <p>One short email per release. Nothing else.</p>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required placeholder="you@example.com" autocomplete="email">
+        <button class="btn solid" type="submit">Tell me</button>
+      </div>
+      <p class="form-msg" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <p class="foot-mark" aria-hidden="true">AZOKI</p>
+  <div class="foot-row">
+    <p>&copy; 2026 Azoki Studios. Made by Braydon.</p>
+    <nav aria-label="Footer">
+      <a href="#work">Work</a>
+      <a href="https://github.com/Braydon2622" target="_blank" rel="noopener">GitHub</a>
+      <a data-sibling="market" href="https://azokimarket.com">Azoki Market</a>
+      <a href="#top">Back to the surface</a>
+    </nav>
+  </div>
+</footer>
+
+<dialog class="lightbox" id="lightbox" aria-label="Full size picture">
+  <button class="lb-close" aria-label="Close">close [x]</button>
+  <img alt="">
+  <p></p>
+</dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="js/works.js"></script>
+<script src="js/sea.js"></script>
+<script src="js/studios.js"></script>
+</body>
+</html>
