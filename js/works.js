@@ -2,8 +2,10 @@
    Edit this file to change text, prices, links or add a new project. */
 window.AZOKI = {
   links: {
-    // TODO: paste the Code Sea itch.io page address here, e.g. 'https://yourname.itch.io/codesea'
-    codeseaBuy: '',
+    codeseaBuy: 'https://braydon262.itch.io/code-sea',
+    codedlens: 'https://codedlens.com',
+    gremletsPlay: 'https://braydonhartai.com/gremlets/',
+    gremletsRepo: 'https://github.com/Braydon2622/gremlets',
     hearthsideDemo: 'https://braydon2622.github.io/hearthside/',
     hearthsideRepo: 'https://github.com/Braydon2622/hearthside',
     market: 'https://azokimarket.com'
@@ -130,6 +132,67 @@ window.AZOKI = {
       ],
       notes: ['Still being built. Leave your email on the home page to hear when it ships.'],
       cta: null
+    },
+    {
+      id: 'codedlens',
+      no: '04',
+      title: 'Coded Lens',
+      kind: 'Web tool',
+      tagline: 'Turn any video into ASCII art.',
+      status: 'Live', version: '1',
+      platform: 'Any browser, best in Chrome or Edge',
+      price: 'Free, with Pro',
+      accent: '#6fe7ff',
+      cover: 'assets/codesea-glow-bloom-night.jpg',   // stand-in: replace with a Coded Lens capture
+      lead: 'Drop in any clip or photo. Every frame gets rebuilt from glowing colored letters, then you can download it as a video for TikTok, Reels or Shorts. It all runs in your browser, so your clips never leave your device.',
+      stats: [
+        ['10', 'looks, from Code Sea to Matrix Rain and Braille HD'],
+        ['3', 'looks free forever: Code Sea, Sea Night and Blocks'],
+        ['4K', 'export with Pro'],
+        ['0', 'uploads: everything is drawn on your own device']
+      ],
+      groups: [
+        { h: 'How it works', items: [
+          ['Upload', 'Pick a video or a photo, or drag one onto the page.'],
+          ['Tune', 'Set how many letters cross the frame, which characters paint brightness, the palette, edges, glow and sparkle.'],
+          ['Record', 'It plays the clip once in real time and hands you a video to download.']
+        ]}
+      ],
+      how: '',
+      gallery: [],
+      notes: ['Free looks carry a small codedlens.com mark on exports. Pro unlocks every look, clean exports and 4K.'],
+      cta: { label: 'Open Coded Lens', link: 'codedlens' }
+    },
+    {
+      id: 'gremlets',
+      no: '05',
+      title: 'Gremlets',
+      kind: 'Desktop companions',
+      tagline: 'Tiny pixel creatures that live on your Mac desktop.',
+      status: 'Playable in the browser', version: '1',
+      platform: 'macOS, plus a web habitat',
+      price: 'Free',
+      accent: '#8fe36b',
+      cover: 'assets/gremlets-lineup.png',
+      lead: 'Sixty eight one-of-a-kind pixel creatures that walk along the Dock line, hop up onto your app windows, ride along when you drag a window, play tag, nap in piles and throw dance parties. They keep you company while you focus and hide when you are on a call.',
+      stats: [
+        ['68', 'species, each one of a kind'],
+        ['228', 'automated tests'],
+        ['1', 'bonsai grown for every project you work on']
+      ],
+      groups: [
+        { h: 'What they do', items: [
+          ['Live on your windows', 'They build staircases of wooden blocks up to windows out of reach, lay plank bridges across gaps and ride minecarts along the wide ones.'],
+          ['Grow with your work', 'Every project grows a bonsai that gets fuller with each Claude Code session, flowers with finished tasks and fruits when tests pass.'],
+          ['Go on expeditions', 'A treasure chest turns up somewhere hard to reach and a Gremlet plans a route across your windows to fetch it.'],
+          ['Stay out of the way', 'Full screen puts everything away, clicks always go through to your app, and they never move or resize your windows.']
+        ]}
+      ],
+      how: '',
+      gallery: [['assets/gremlets-lineup.png', 'The 68 Gremlets']],
+      notes: ['The desktop app is for macOS. The web habitat runs in any browser.'],
+      cta: { label: 'Play with the Gremlets', link: 'gremletsPlay' },
+      cta2: { label: 'Source on GitHub', link: 'gremletsRepo' }
     }
   ]
 };
