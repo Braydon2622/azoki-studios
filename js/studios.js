@@ -7,7 +7,7 @@
 
   /* sibling site links: the real domain when live, the folder next door while previewing */
   function siblings() {
-    const pages = /\.github\.io$/.test(location.hostname);   // until the real domains are connected
+    const pages = /^\/azoki-(studios|market)\//.test(location.pathname);   // GitHub Pages sub-folder, until the real domains are connected
     $$('a[data-sibling]').forEach((a) => {
       if (local) a.href = '../' + a.dataset.sibling + '/index.html';
       else if (pages) a.href = '/azoki-' + a.dataset.sibling + '/';
