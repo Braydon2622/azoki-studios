@@ -143,7 +143,8 @@ window.AZOKI = {
       platform: 'Any browser, best in Chrome or Edge',
       price: 'Free, with Pro',
       accent: '#6fe7ff',
-      cover: 'assets/codesea-glow-bloom-night.jpg',   // stand-in: replace with a Coded Lens capture
+      embed: 'https://codedlens.com/',   // the page header shows the live tool itself
+      cover: '',
       lead: 'Drop in any clip or photo. Every frame gets rebuilt from glowing colored letters, then you can download it as a video for TikTok, Reels or Shorts. It all runs in your browser, so your clips never leave your device.',
       stats: [
         ['10', 'looks, from Code Sea to Matrix Rain and Braille HD'],
@@ -173,7 +174,7 @@ window.AZOKI = {
       platform: 'macOS, plus a web habitat',
       price: 'Free',
       accent: '#8fe36b',
-      cover: 'assets/gremlets-lineup.png',
+      cover: 'assets/gremlets-lineup.png', pixel: true,
       lead: 'Sixty eight one-of-a-kind pixel creatures that walk along the Dock line, hop up onto your app windows, ride along when you drag a window, play tag, nap in piles and throw dance parties. They keep you company while you focus and hide when you are on a call.',
       stats: [
         ['68', 'species, each one of a kind'],

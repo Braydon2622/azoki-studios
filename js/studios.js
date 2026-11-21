@@ -91,6 +91,34 @@
     p.addEventListener('pointerleave', () => move(0.5, 0.5));
   }
 
+  /* Live embeds: the real product in a frame. Loaded when scrolled near (or on click, with
+     reduced motion), drawn at a fixed desktop size and scaled to fit. It only takes the mouse
+     after a click, so scrolling the page never gets trapped inside it. */
+  function embeds() {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    $$('.screen.live[data-embed]').forEach((s) => {
+      const w = +s.dataset.w || 1180, h = +s.dataset.h || 664, go = $('.live-go', s);
+      let fr = null;
+      const fit = () => { if (fr) fr.style.transform = 'scale(' + (s.clientWidth / w) + ')'; };
+      const load = () => {
+        if (fr) return;
+        fr = document.createElement('iframe');
+        fr.src = s.dataset.embed; fr.title = s.dataset.title || 'Live demo'; fr.loading = 'lazy';
+        fr.width = w; fr.height = h; fr.style.width = w + 'px'; fr.style.height = h + 'px';
+        fr.setAttribute('allow', 'autoplay'); fr.tabIndex = -1;
+        fr.addEventListener('load', () => { const im = $('img', s), pw = $('.live-wait', s); if (im) im.classList.remove('on'); if (pw) pw.remove(); });
+        s.appendChild(fr); fit();
+      };
+      go.addEventListener('click', () => { load(); s.classList.add('on'); fr.tabIndex = 0; fr.focus(); });
+      s.addEventListener('pointerleave', () => { s.classList.remove('on'); if (fr) fr.tabIndex = -1; });
+      if ('ResizeObserver' in window) new ResizeObserver(fit).observe(s); else addEventListener('resize', fit);
+      if (!reduce && 'IntersectionObserver' in window) {
+        const io = new IntersectionObserver((es) => { if (es[0].isIntersecting) { load(); io.disconnect(); } }, { rootMargin: '200px' });
+        io.observe(s);
+      }
+    });
+  }
+
   /* "the whale comes at the top of every hour" */
   function whaleClock() {
     const el = $('#whaleClock'); if (!el) return;
@@ -143,7 +171,9 @@
       return '<a class="btn ' + cls + '" data-link="' + c.link + '" data-strict="1" href="' + (url ? esc(url) : '#') + '">' + esc(c.label) + '</a>';
     };
     root.innerHTML =
-      '<section class="wk-hero"><img src="' + w.cover + '" alt="' + esc(w.title) + '">' +
+      '<section class="wk-hero' + (w.pixel ? ' pixel' : '') + '">' +
+      (w.embed ? '<iframe src="' + esc(w.embed) + '" title="' + esc(w.title) + ', running live" tabindex="-1" aria-hidden="true"></iframe>'
+               : '<img src="' + w.cover + '" alt="' + esc(w.title) + '">') +
       '<div class="wk-head"><p class="piece-no">' + w.no + ' <span>' + esc(w.kind) + '</span></p><h1>' + esc(w.title) + '</h1>' +
       '<p class="piece-tag">' + esc(w.tagline) + '</p>' +
       '<div class="wk-bar"><div><span>Status</span>' + esc(w.status) + ', v' + esc(w.version) + '</div><div><span>Runs on</span>' + esc(w.platform) + '</div><div><span>Price</span>' + esc(w.price) + '</div>' +
@@ -161,5 +191,5 @@
       '<a class="wk-next" href="work.html?id=' + next.id + '"><span>Next: ' + next.no + '</span><b>' + esc(next.title) + ' -&gt;</b></a>';
   }
 
-  workPage(); siblings(); dataLinks(); nav(); reveals(); tabs(); dial(); pan(); whaleClock(); lightbox(); signup();
+  workPage(); siblings(); dataLinks(); nav(); reveals(); tabs(); dial(); pan(); embeds(); whaleClock(); lightbox(); signup();
 })();
