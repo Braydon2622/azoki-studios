@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nothing down here | Azoki Studios</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#04070d">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* This page is shown for any address that does not exist, at any depth, so everything it needs is in this one file. */
+  * { box-sizing: border-box; margin: 0; }
+  body { min-height: 100svh; display: grid; place-items: center; background: #04070d; color: #e8eef7; font-family: "JetBrains Mono", ui-monospace, Consolas, monospace; padding: 24px; overflow: hidden; }
+  main { position: relative; z-index: 1; max-width: 640px; }
+  .no { font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase; color: #6fe7ff; }
+  h1 { font-family: "Bricolage Grotesque", system-ui, sans-serif; font-weight: 800; font-size: clamp(48px, 11vw, 120px); line-height: .9; letter-spacing: -.04em; margin: 14px 0 22px; }
+  p.sub { color: #8c9bb0; font-size: 15px; line-height: 1.6; max-width: 46ch; }
+  .go { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+  a { display: inline-block; padding: 14px 20px; border-radius: 3px; font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; border: 1px solid rgba(150, 190, 255, .28); color: #e8eef7; }
+  a.solid { background: #6fe7ff; border-color: #6fe7ff; color: #04070d; font-weight: 500; }
+  a:hover { border-color: #6fe7ff; }
+  a:focus-visible { outline: 2px solid #6fe7ff; outline-offset: 3px; }
+  .fish { position: fixed; left: 0; white-space: pre; color: rgba(111, 231, 255, .34); font-size: 14px; animation: swim linear infinite; pointer-events: none; }
+  .fish.b { color: rgba(255, 162, 77, .3); }
+  @keyframes swim { from { transform: translateX(-12vw); } to { transform: translateX(112vw); } }
+  @keyframes back { from { transform: translateX(112vw); } to { transform: translateX(-12vw); } }
+  @media (prefers-reduced-motion: reduce) { .fish { animation: none; transform: translateX(70vw); } }
+</style>
+</head>
+<body>
+<div aria-hidden="true">
+  <span class="fish" style="top:14%;animation-duration:38s">&gt;&lt;&gt;</span>
+  <span class="fish b" style="top:27%;animation-duration:52s;animation-name:back">&lt;&gt;&lt;   &lt;&gt;&lt;</span>
+  <span class="fish" style="top:71%;animation-duration:44s;animation-delay:-20s">&gt;&lt;&gt;  &gt;&lt;&gt;    &gt;&lt;&gt;</span>
+  <span class="fish b" style="top:86%;animation-duration:61s;animation-name:back;animation-delay:-9s">&lt;&gt;&lt;</span>
+</div>
+<main>
+  <p class="no">404 / page not found</p>
+  <h1>Nothing down here.</h1>
+  <p class="sub">This page does not exist, or it drifted somewhere else. The fish do not seem to mind.</p>
+  <div class="go">
+    <a class="solid" href="/">Back to the surface</a>
+    <a href="/#work">See the work</a>
+  </div>
+</main>
+</body>
+</html>

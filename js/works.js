@@ -54,6 +54,10 @@ window.AZOKI = {
         ]}
       ],
       how: 'Nothing is drawn with lines or shapes. Each frame is a grid of characters, uploaded as one small texture and drawn in a single pass through a font atlas. Creatures are 3D models sampled into thousands of points and splatted into cells: outline cells follow the silhouette, inside cells take a letter from a density ramp keyed to the surface, so the letters ride along with the body.',
+      motion: [   // [file, caption, width, height]
+        ['assets/codesea-whale.gif', 'The whale rises', 640, 360],
+        ['assets/codesea-bloom.gif', 'Jelly bloom', 800, 450]
+      ],
       gallery: [
         ['assets/codesea-cover-whale.jpg', 'The whale, close'],
         ['assets/codesea-school-shark-day.jpg', 'The great white in the school'],

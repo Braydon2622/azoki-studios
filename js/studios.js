@@ -160,8 +160,15 @@
   function esc(s) { return String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
   function workPage() {
     const root = $('#workRoot'); if (!root) return;
-    const id = new URLSearchParams(location.search).get('id');
-    const idx = Math.max(0, A.works.findIndex((w) => w.id === id));
+    /* Each project has its own page (winterville/ and so on), made by tools/build.js.
+       work.html?id= is the old address: it only forwards to the new one. */
+    const here = document.documentElement.dataset.work;
+    if (!here) {
+      const q = new URLSearchParams(location.search).get('id');
+      location.replace((A.works.some((w) => w.id === q) ? q : A.works[0].id) + '/');
+      return;
+    }
+    const idx = Math.max(0, A.works.findIndex((w) => w.id === here));
     const w = A.works[idx], next = A.works[(idx + 1) % A.works.length];
     document.title = w.title + ' | Azoki Studios';
     document.documentElement.style.setProperty('--accent', w.accent);
@@ -184,11 +191,13 @@
       w.groups.map((g) => '<section class="wk-group reveal"><h2>' + esc(g.h) + '</h2><ul class="wk-list">' +
         g.items.map((it) => '<li><div><b>' + esc(it[0]) + '</b><span>' + esc(it[1]) + '</span></div></li>').join('') + '</ul></section>').join('') +
       (w.how ? '<section class="wk-group reveal"><h2>How it is made</h2><p class="wk-how">' + esc(w.how) + '</p></section>' : '') +
-      '<section class="wk-group reveal" style="grid-template-columns:1fr"><h2 style="position:static">Stills</h2><div class="wk-gallery">' +
+      (w.motion ? '<section class="wk-group reveal" style="grid-template-columns:1fr"><h2 style="position:static">In motion</h2><div class="wk-motion">' +
+        w.motion.map((m) => '<figure><img src="' + m[0] + '" alt="' + esc(m[1]) + ', moving" loading="lazy" width="' + m[2] + '" height="' + m[3] + '"><figcaption>' + esc(m[1]) + '</figcaption></figure>').join('') + '</div></section>' : '') +
+      '<section class="wk-group reveal" style="grid-template-columns:1fr"><h2 style="position:static">' + (w.gallery.length ? 'Stills' : 'Good to know') + '</h2><div class="wk-gallery"' + (w.gallery.length ? '' : ' hidden') + '>' +
       w.gallery.map((g) => '<button class="shot" data-full="' + g[0] + '"><img src="' + g[0] + '" alt="' + esc(g[1]) + '" loading="lazy"><span><b style="margin:0">' + esc(g[1]) + '</b></span></button>').join('') +
       '</div><div class="wk-notes">' + w.notes.map((n) => '<p>&gt; ' + esc(n) + '</p>').join('') + '</div></section>' +
       '<div style="height:clamp(60px,8vw,120px)"></div></div>' +
-      '<a class="wk-next" href="work.html?id=' + next.id + '"><span>Next: ' + next.no + '</span><b>' + esc(next.title) + ' -&gt;</b></a>';
+      '<a class="wk-next" href="' + next.id + '/"><span>Next: ' + next.no + '</span><b>' + esc(next.title) + ' -&gt;</b></a>';
   }
 
   workPage(); siblings(); dataLinks(); nav(); reveals(); tabs(); dial(); pan(); embeds(); whaleClock(); lightbox(); signup();
