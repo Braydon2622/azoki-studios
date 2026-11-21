@@ -194,6 +194,68 @@ window.AZOKI = {
       notes: ['The desktop app is for macOS. The web habitat runs in any browser.'],
       cta: { label: 'Play with the Gremlets', link: 'gremletsPlay' },
       cta2: { label: 'Source on GitHub', link: 'gremletsRepo' }
+    },
+    {
+      id: 'winterville',
+      no: '06',
+      title: 'Winterville',
+      kind: 'Desktop game',
+      tagline: 'A pixel village that spends the winter on your desktop.',
+      status: 'In development', version: 'test build',
+      platform: 'Windows',
+      price: 'Not out yet',
+      accent: '#ff8a70',
+      cover: 'assets/winterville-town.png', pixel: true,
+      lead: 'A snowy little town settles along the bottom of your screen while you work. Snow falls on your real windows and piles up; move a window and it tumbles off. Snow folk parachute in, walk along your title bars, ride your cursor and throw snowballs back. Open one door on the calendar each day and the town grows all the way to Christmas.',
+      stats: [
+        ['30', 'doors on the winter calendar, one a day'],
+        ['30', 'more when the snow melts and spring arrives'],
+        ['6', 'music box carols to unlock'],
+        ['1', 'clock tower counting down to Christmas']
+      ],
+      groups: [
+        { h: 'A town that grows', items: [
+          ['The calendar', 'One door a day for thirty days. Doors bring gifts, new styles and new buildings: a toy shop, an ice palace, a giant snow globe, the mail train.'],
+          ['Snowflakes', 'The snow you see falling is the town\'s money. Spend it on lamp posts, igloos, a snow fort or a cocoa stand, and on hats, scarves and lights for the folk.'],
+          ['Town projects', 'Start a snow castle or a giant Christmas tree and the folk carry snow to the site until it is finished.'],
+          ['Christmas Eve', 'Bells in the sky. Santa lands in the town square with a present for everyone.'],
+          ['Then spring', 'The snow melts and a second calendar begins: flower boxes, kite day, ducklings on the pond.']
+        ]},
+        { h: 'It plays with your desktop', items: [
+          ['Snow on your windows', 'It piles up on every window, hangs icicles underneath and strings lights between them. Shake a window hard for a blizzard.'],
+          ['Pick them up', 'Drag a snow folk onto a window, give one a ride on your cursor, or roll a snowball and start a fight. They throw back.'],
+          ['Draw a sled run', 'Hold Alt and drag a line anywhere on screen; the folk will sled down it.'],
+          ['Carve the ice', 'Hold Shift and carve the day\'s ice block yourself. The judges score it out of ten.'],
+          ['Frost', 'Leave for a while and frost creeps in from the edges of the screen. Wipe it off when you are back.']
+        ]},
+        { h: 'The folk remember', items: [
+          ['Residents', 'Every snow folk has a name and a temper: grumpy, brave, giggly or sleepy. They remember rides, avalanches and exactly how many times you hit them.'],
+          ['Gossip', 'They make best friends, fall in love, have babies and tell you all about each other.'],
+          ['Visitors', 'Penguins, foxes, seals, owls and reindeer wander through. Feed one its favourite treat and you have a friend.'],
+          ['Snowball post', 'Throw a snowball to a real friend with a short code, and one of your folk turns up in their village.']
+        ]},
+        { h: 'It knows you are working', items: [
+          ['Focus clock', 'Start a focus session and the whole town builds a big snowman while you work. Snow counts double.'],
+          ['Quiet on calls', 'The town hushes while you are in a meeting and asks how it went afterwards.'],
+          ['Small kindnesses', 'A nudge when your battery is low, a yawn when it is really late.'],
+          ['Real weather', 'Switch it on and the first real snow where you live sets off a First Snow festival in town.']
+        ]}
+      ],
+      how: 'The game runs as a see-through window that sits on top of your desktop and lets every click pass through unless it lands on something in the town. Many of the small sprites are drawn by code from grids of letters, and the sound effects are generated when the game starts.',
+      gallery: [
+        ['assets/winterville-town.png', 'The town, along the bottom of the screen'],
+        ['assets/winterville-eve.png', 'Christmas Eve: Santa in the square'],
+        ['assets/winterville-calendar.png', 'The winter calendar'],
+        ['assets/winterville-train.png', 'The Winter Express pulls in'],
+        ['assets/winterville-market.png', 'Garlands and the Christmas market'],
+        ['assets/winterville-windows.png', 'Lights and icicles on your windows'],
+        ['assets/winterville-frost.png', 'Frost creeps in while you are away']
+      ],
+      notes: [
+        'Still being built and tested on Windows. Leave your email on the home page to hear when it ships.',
+        'Stills are from a test build, taken over a plain backdrop.'
+      ],
+      cta: null
     }
   ]
 };

@@ -176,7 +176,7 @@
                : '<img src="' + w.cover + '" alt="' + esc(w.title) + '">') +
       '<div class="wk-head"><p class="piece-no">' + w.no + ' <span>' + esc(w.kind) + '</span></p><h1>' + esc(w.title) + '</h1>' +
       '<p class="piece-tag">' + esc(w.tagline) + '</p>' +
-      '<div class="wk-bar"><div><span>Status</span>' + esc(w.status) + ', v' + esc(w.version) + '</div><div><span>Runs on</span>' + esc(w.platform) + '</div><div><span>Price</span>' + esc(w.price) + '</div>' +
+      '<div class="wk-bar"><div><span>Status</span>' + esc(w.status) + ', ' + (/^\d/.test(w.version) ? 'v' : '') + esc(w.version) + '</div><div><span>Runs on</span>' + esc(w.platform) + '</div><div><span>Price</span>' + esc(w.price) + '</div>' +
       '<div class="push">' + btn(w.cta, 'solid') + btn(w.cta2, 'ghost') + '</div></div></div></section>' +
       '<div class="wk-wrap">' +
       '<section class="wk-lead"><p class="big reveal">' + esc(w.lead) + '</p><div class="stats reveal">' +

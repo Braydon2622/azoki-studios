@@ -109,6 +109,13 @@ section { padding: clamp(80px, 12vw, 170px) var(--pad); }
 .screen.pan { aspect-ratio: 16 / 9; cursor: crosshair; }
 .screen.pan img { width: 135%; max-width: none; height: 135%; inset: auto; left: 0; top: 0; transition: opacity .7s, transform .5s cubic-bezier(.2, .7, .2, 1); }
 .screen img.pixel { image-rendering: pixelated; }
+/* a wide strip that walks from one end to the other and back */
+.screen.strip { container-type: inline-size; width: 100%; background: #14163a; }
+.screen.strip img { inset: auto; left: 0; top: 0; width: auto; max-width: none; height: 100%; object-fit: fill; animation: strip-walk 50s ease-in-out infinite alternate; }
+.screen.strip:hover img { animation-play-state: paused; }
+@keyframes strip-walk { from { transform: translateX(0); } to { transform: translateX(calc(-100% + 100cqw)); } }
+@media (prefers-reduced-motion: reduce) { .screen.strip img { animation: none; transform: translateX(calc(-50% + 50cqw)); } }
+.wk-gallery .shot img[src$=".png"] { image-rendering: pixelated; }
 .screen.day { background: #f3efe6; }
 .screen.live iframe { position: absolute; left: 0; top: 0; border: 0; transform-origin: 0 0; pointer-events: none; background: #05080f; }
 .screen.live.on iframe { pointer-events: auto; }
