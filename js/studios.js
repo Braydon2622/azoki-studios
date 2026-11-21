@@ -24,7 +24,7 @@
   function dataLinks() {
     $$('a[data-link]').forEach((a) => {
       const url = A.links[a.dataset.link];
-      if (url) { a.href = url; a.target = '_blank'; a.rel = 'noopener'; }
+      if (url) { a.href = url; a.target = '_blank'; a.rel = 'noopener'; if (a.dataset.liveLabel) a.textContent = a.dataset.liveLabel; }
       else if (a.dataset.strict) a.addEventListener('click', (e) => { e.preventDefault(); toast('The store link is not set yet.'); });
     });
   }
@@ -141,19 +141,33 @@
     lb.addEventListener('click', (e) => { if (e.target === lb || e.target.closest('.lb-close')) lb.close(); });
   }
 
-  /* Email sign-up. On Netlify the form posts to Netlify Forms; anywhere else it only says so. */
+  /* Email sign-up. Each one is forwarded to AZOKI.signupTo by formsubmit.co. */
   function signup() {
-    $$('form[data-netlify]').forEach((f) => {
+    $$('form.signup').forEach((f) => {
       f.addEventListener('submit', (e) => {
         e.preventDefault();
-        const msg = $('.form-msg', f);
+        const msg = $('.form-msg', f), btn = $('button[type=submit]', f);
+        if (f.elements._honey.value) return;
         if (local) { msg.textContent = '> preview only: nothing was sent.'; return; }
-        if (!/netlify\.app$/.test(location.hostname) && !A.formsOnNetlify) { msg.textContent = '> sign-ups are not switched on yet. nothing was sent.'; return; }
-        fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(f)).toString() })
-          .then((r) => { if (!r.ok) throw 0; msg.textContent = '> got it. you will hear from me when something ships.'; f.reset(); })
-          .catch(() => { msg.textContent = '> that did not send. please try again in a bit.'; });
+        if (!A.signupTo) { msg.textContent = '> sign-ups are not switched on yet. nothing was sent.'; return; }
+        btn.disabled = true; msg.textContent = '> sending...';
+        fetch('https://formsubmit.co/ajax/' + A.signupTo, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ email: f.elements.email.value, list: 'Azoki Studios', _subject: 'Azoki Studios sign-up', _template: 'table' }) })
+          .then((r) => r.json())
+          .then((d) => { if (String(d.success) !== 'true') throw 0; msg.textContent = '> got it. you will hear from me when something ships.'; f.reset(); })
+          .catch(() => { msg.textContent = '> that did not send. try again in a bit, or write to ' + A.signupTo + '.'; })
+          .finally(() => { btn.disabled = false; });
       });
     });
+  }
+
+  /* Winterville's clock tower counts down to Christmas. So does its panel. */
+  function xmasClock() {
+    const el = $('#xmasClock'); if (!el) return;
+    const n = new Date(), x = new Date(n.getFullYear(), 11, 25);
+    const days = Math.ceil((x - new Date(n.getFullYear(), n.getMonth(), n.getDate())) / 864e5);
+    if (days < 0 || days > 60) return;
+    el.textContent = days === 0 ? '> it is christmas day. the square is full.' : '> christmas is in ' + days + (days === 1 ? ' day' : ' days') + '. the clock tower is counting too.';
   }
 
   /* ---------- project page ---------- */
@@ -175,6 +189,7 @@
     const btn = (c, cls) => {
       if (!c) return '';
       const url = A.links[c.link];
+      if (!url && c.soon) return '<a class="btn ' + cls + '" href="index.html#bench">' + esc(c.soon) + '</a>';   /* not out yet: send them to the sign-up */
       return '<a class="btn ' + cls + '" data-link="' + c.link + '" data-strict="1" href="' + (url ? esc(url) : '#') + '">' + esc(c.label) + '</a>';
     };
     root.innerHTML =
@@ -200,5 +215,5 @@
       '<a class="wk-next" href="' + next.id + '/"><span>Next: ' + next.no + '</span><b>' + esc(next.title) + ' -&gt;</b></a>';
   }
 
-  workPage(); siblings(); dataLinks(); nav(); reveals(); tabs(); dial(); pan(); embeds(); whaleClock(); lightbox(); signup();
+  workPage(); siblings(); dataLinks(); nav(); reveals(); tabs(); dial(); pan(); embeds(); whaleClock(); xmasClock(); lightbox(); signup();
 })();

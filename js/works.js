@@ -1,7 +1,9 @@
 /* Everything the Studios site says about each project lives here.
    Edit this file to change text, prices, links or add a new project. */
 window.AZOKI = {
+  signupTo: 'hello@azokistudios.com',   // where email sign-ups are sent (through formsubmit.co)
   links: {
+    wintervilleBuy: '',   // paste the itch.io address here when the page exists: every Winterville button becomes a buy button
     codeseaBuy: 'https://braydon262.itch.io/code-sea',
     codedlens: 'https://codedlens.com',
     gremletsPlay: 'https://braydonhartai.com/gremlets/',
@@ -205,9 +207,9 @@ window.AZOKI = {
       title: 'Winterville',
       kind: 'Desktop game',
       tagline: 'A pixel village that spends the winter on your desktop.',
-      status: 'In development', version: 'test build',
+      status: 'Coming soon', version: 'in time for Christmas',
       platform: 'Windows',
-      price: 'Not out yet',
+      price: 'To be announced',
       accent: '#ff8a70',
       cover: 'assets/winterville-town.png', pixel: true,
       lead: 'A snowy little town settles along the bottom of your screen while you work. Snow falls on your real windows and piles up; move a window and it tumbles off. Snow folk parachute in, walk along your title bars, ride your cursor and throw snowballs back. Open one door on the calendar each day and the town grows all the way to Christmas.',
@@ -256,10 +258,10 @@ window.AZOKI = {
         ['assets/winterville-frost.png', 'Frost creeps in while you are away']
       ],
       notes: [
-        'Still being built and tested on Windows. Leave your email on the home page to hear when it ships.',
+        'Coming to itch.io this season. Leave your email on the home page and you will hear the day it is out.',
         'Stills are from a test build, taken over a plain backdrop.'
       ],
-      cta: null
+      cta: { label: 'Get Winterville on itch.io', link: 'wintervilleBuy', soon: 'Tell me when it is out' }
     }
   ]
 };
