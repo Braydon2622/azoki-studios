@@ -215,5 +215,136 @@
       '<a class="wk-next" href="' + next.id + '/"><span>Next: ' + next.no + '</span><b>' + esc(next.title) + ' -&gt;</b></a>';
   }
 
+  /* ---------- showpieces ---------- */
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Headings arrive as ASCII noise and settle into words, the way Code Sea draws its fish.
+     Every letter is pinned to its real width first, so nothing reflows while it settles. */
+  function decode() {
+    if (reduce || !('IntersectionObserver' in window)) return;
+    const G = '<>~/\\|=+*-_:;^';
+    const run = (el) => {
+      const html = el.innerHTML, label = el.textContent, chars = [];
+      const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), nodes = [];
+      while (tw.nextNode()) nodes.push(tw.currentNode);
+      nodes.forEach((n) => {
+        const frag = document.createDocumentFragment();
+        n.nodeValue.split(/(\s+)/).forEach((part) => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+          const w = document.createElement('span'); w.className = 'dc-w';
+          for (const c of part) { const s = document.createElement('span'); s.className = 'dc-c'; s.textContent = c; w.appendChild(s); chars.push([s, c]); }
+          frag.appendChild(w);
+        });
+        n.parentNode.replaceChild(frag, n);
+      });
+      chars.map(([s]) => s.getBoundingClientRect().width).forEach((wd, i) => { chars[i][0].style.width = wd.toFixed(2) + 'px'; });
+      el.setAttribute('aria-label', label); el.classList.add('dc-on');
+      const t0 = performance.now(), dur = Math.min(1500, 520 + chars.length * 16);
+      let last = 0;
+      const step = (now) => {
+        const p = (now - t0) / dur;
+        if (p >= 1) { el.innerHTML = html; el.removeAttribute('aria-label'); el.classList.remove('dc-on'); return; }
+        if (now - last > 42) {
+          last = now;
+          chars.forEach(([s, c], i) => {
+            const done = i / chars.length < p * 1.35 - 0.35;
+            s.textContent = done ? c : G[(Math.random() * G.length) | 0];
+            s.classList.toggle('dc-x', !done);
+          });
+        }
+        requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { io.unobserve(e.target); run(e.target); } }), { threshold: 0.3 });
+    const go = () => $$('.hero h1, .sec-head h2, .piece h3, .wk-head h1, .tm-copy h2').forEach((h) => io.observe(h));
+    (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(go);
+  }
+
+  /* The page is a dive: a gauge in the right margin reads how deep you have scrolled. */
+  function depth() {
+    if (!$('#sea') || !matchMedia('(min-width: 1200px)').matches) return;
+    const g = document.createElement('aside'); g.className = 'depth'; g.setAttribute('aria-hidden', 'true');
+    g.innerHTML = '<span class="depth-zone">surface</span><div class="depth-rail"><i>&gt;&lt;&gt;</i></div><span class="depth-read">0000 m</span>';
+    document.body.appendChild(g);
+    const fish = $('i', g), read = $('.depth-read', g), zone = $('.depth-zone', g);
+    const ZONES = [[0, 'surface'], [40, 'sunlit water'], [200, 'twilight'], [1000, 'midnight'], [3000, 'the abyss'], [3780, 'the sea floor']];
+    let tick = false;
+    const f = () => {
+      tick = false;
+      const max = document.documentElement.scrollHeight - innerHeight, p = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
+      const m = Math.round(p * 3800);
+      fish.style.top = (p * 100).toFixed(2) + '%';
+      read.textContent = String(m).padStart(4, '0') + ' m';
+      let z = ZONES[0][1]; ZONES.forEach((x) => { if (m >= x[0]) z = x[1]; });
+      if (zone.textContent !== z) zone.textContent = z;
+      g.classList.toggle('show', scrollY > innerHeight * 0.5);
+    };
+    addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(f); } }, { passive: true });
+    f();
+  }
+
+  /* Screens lean toward the cursor and catch a little light. */
+  function tilt() {
+    if (reduce || !matchMedia('(hover: hover)').matches) return;
+    $$('.piece-show .screen:not(.live):not(.pan):not(.strip)').forEach((s) => {
+      s.classList.add('tilt');
+      s.addEventListener('pointermove', (e) => {
+        const r = s.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        s.style.setProperty('--ry', ((x - 0.5) * 7).toFixed(2) + 'deg');
+        s.style.setProperty('--rx', ((0.5 - y) * 5).toFixed(2) + 'deg');
+        s.style.setProperty('--gx', (x * 100).toFixed(1) + '%'); s.style.setProperty('--gy', (y * 100).toFixed(1) + '%');
+      });
+      s.addEventListener('pointerleave', () => { s.style.setProperty('--ry', '0deg'); s.style.setProperty('--rx', '0deg'); });
+    });
+  }
+
+  /* Winterville snows on its own panel, and the snow settles on top of the screen
+     the way the game piles it on your real windows. */
+  function snow() {
+    const show = $('#winterville .piece-show'), scr = show && $('.screen', show);
+    if (!scr || reduce || !('IntersectionObserver' in window)) return;
+    const TOP = 110, cv = document.createElement('canvas'); cv.className = 'snow'; cv.setAttribute('aria-hidden', 'true');
+    show.appendChild(cv);
+    const cx = cv.getContext('2d'); let W = 0, H = 0, dpr = 1, pile = [], flakes = [], on = false, last = 0;
+    const COL = 4, MAXH = 15;
+    const size = () => {
+      dpr = Math.min(2, devicePixelRatio || 1); W = scr.clientWidth; H = scr.clientHeight + TOP;
+      cv.width = W * dpr; cv.height = H * dpr; cv.style.width = W + 'px'; cv.style.height = H + 'px';
+      const n = Math.ceil(W / COL); if (pile.length !== n) pile = Array.from({ length: n }, (_, i) => 2.5 + 1.5 * Math.sin(i * 0.21) + Math.random());
+    };
+    const flake = (y) => ({ x: Math.random() * W, y: y, r: 0.8 + Math.random() * 1.9, v: 22 + Math.random() * 38, s: Math.random() * 6.28, lands: Math.random() < 0.55 });
+    const frame = (now) => {
+      if (!on) return;
+      const dt = Math.min(0.05, (now - last) / 1000); last = now;
+      if (flakes.length < Math.min(150, W / 5)) flakes.push(flake(-6));
+      cx.setTransform(dpr, 0, 0, dpr, 0, 0); cx.clearRect(0, 0, W, H);
+      for (let i = flakes.length - 1; i >= 0; i--) {
+        const k = flakes[i]; k.y += k.v * dt; k.x += Math.sin(now / 900 + k.s) * 14 * dt;
+        const c = Math.max(0, Math.min(pile.length - 1, (k.x / COL) | 0));
+        if (k.lands && k.y >= TOP - pile[c] && k.y < TOP + 6) {
+          if (pile[c] < MAXH) { pile[c] += 1.5; if (c > 0) pile[c - 1] += 0.7; if (c < pile.length - 1) pile[c + 1] += 0.7; }
+          flakes[i] = flake(-6); continue;
+        }
+        if (k.y > H + 4) { flakes[i] = flake(-6); continue; }
+        cx.globalAlpha = k.y > TOP ? 0.55 : 0.9; cx.fillStyle = '#fff';
+        cx.beginPath(); cx.arc(k.x, k.y, k.r, 0, 6.2832); cx.fill();
+      }
+      /* the drift on top of the screen: smooth it a little every frame so it slumps like snow */
+      for (let c = 1; c < pile.length - 1; c++) { const d = pile[c] - (pile[c - 1] + pile[c + 1]) / 2; if (d > 1.2) { pile[c] -= d * 0.2; pile[c - 1] += d * 0.1; pile[c + 1] += d * 0.1; } }
+      cx.globalAlpha = 1; cx.fillStyle = '#f4f8ff'; cx.beginPath(); cx.moveTo(0, TOP + 1);
+      for (let c = 0; c < pile.length; c++) { const e = Math.min(1, Math.min(c, pile.length - 1 - c) / 4); cx.lineTo(c * COL + COL / 2, TOP + 1 - Math.min(MAXH, pile[c]) * e); }
+      cx.lineTo(W, TOP + 1); cx.closePath(); cx.fill();
+      requestAnimationFrame(frame);
+    };
+    size();
+    if ('ResizeObserver' in window) new ResizeObserver(size).observe(scr);
+    new IntersectionObserver((es) => {
+      const v = es[0].isIntersecting; if (v && !on) { on = true; last = performance.now(); requestAnimationFrame(frame); } else if (!v) on = false;
+    }).observe(show);
+  }
+
   workPage(); siblings(); dataLinks(); nav(); reveals(); tabs(); dial(); pan(); embeds(); whaleClock(); xmasClock(); lightbox(); signup();
+  decode(); depth(); tilt(); snow();
 })();

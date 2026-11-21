@@ -270,3 +270,36 @@ section { padding: clamp(80px, 12vw, 170px) var(--pad); }
   .ticker-track, .dot.wip { animation: none; }
   .screen img, .shot img, .tm-frame { transition: none; }
 }
+
+/* ---------- showpieces ---------- */
+@view-transition { navigation: auto; }
+.nav { view-transition-name: nav; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .45s; }
+
+/* headings that decode out of noise (studios.js: decode) */
+.dc-w { display: inline-block; white-space: nowrap; }
+.dc-c { display: inline-block; text-align: center; }
+.dc-c.dc-x { color: var(--accent); opacity: .7; text-shadow: none; }
+
+/* depth gauge in the right margin */
+.depth { position: fixed; right: 15px; top: 50%; transform: translateY(-50%); z-index: 40; display: flex; flex-direction: column; align-items: center; gap: 12px; font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--mute); opacity: 0; transition: opacity .6s; pointer-events: none; mix-blend-mode: difference; }
+.depth.show { opacity: 1; }
+.depth-zone, .depth-read { writing-mode: vertical-rl; white-space: nowrap; }
+.depth-zone { height: 132px; text-align: right; color: var(--accent); }
+.depth-read { height: 64px; }
+.depth-rail { position: relative; width: 1px; height: 28vh; background: rgba(150, 190, 255, .3); }
+.depth-rail i { position: absolute; left: 50%; top: 0; transform: translate(-50%, -50%) rotate(90deg); font-style: normal; font-size: 11px; letter-spacing: 0; color: var(--accent); text-shadow: 0 0 12px var(--accent); transition: top .25s linear; }
+
+/* screens lean toward the cursor */
+.piece-show { perspective: 1400px; }
+.screen.tilt { transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
+.screen.tilt::after { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, .14), transparent 46%); opacity: 0; transition: opacity .4s; }
+.screen.tilt:hover::after { opacity: 1; }
+
+/* Winterville's own weather */
+#winterville .piece-show { position: relative; }
+.snow { position: absolute; left: 0; top: -116px; z-index: 4; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+}
