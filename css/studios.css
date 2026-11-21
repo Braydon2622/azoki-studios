@@ -255,7 +255,8 @@ section { padding: clamp(80px, 12vw, 170px) var(--pad); }
   .wk-group h2 { position: static; }
   .wk-gallery { grid-template-columns: 1fr; }
   .wk-bar .push { margin-left: 0; width: 100%; }
-  .hero-shade { background: linear-gradient(0deg, var(--bg) 0%, rgba(4, 7, 13, .7) 45%, rgba(4, 7, 13, .2) 100%); }
+  .hero-shade { background: linear-gradient(0deg, var(--bg) 0%, rgba(4, 7, 13, .9) 40%, rgba(4, 7, 13, .82) 62%, rgba(4, 7, 13, .2) 82%); }
+  .wk-hero::after { background: linear-gradient(0deg, var(--bg) 4%, rgba(4, 7, 13, .88) 40%, rgba(4, 7, 13, .8) 62%, rgba(4, 7, 13, .3) 84%, rgba(4, 7, 13, .6) 100%); }
   .board .row { grid-template-columns: 1.3fr 1.2fr; }
   .board .row span:nth-child(2), .board .row span:nth-child(3) { display: none; }
 }
