@@ -5,6 +5,8 @@ window.AZOKI = {
   links: {
     wintervilleBuy: '',   // paste the itch.io address here when the page exists: every Winterville button becomes a buy button
     codeseaBuy: 'https://braydon262.itch.io/code-sea',
+    coderealmBuy: 'https://braydon262.itch.io/code-realm',
+    reefBuy: 'https://braydon262.itch.io/desktop-reef',
     codedlens: 'https://codedlens.com',
     gremletsPlay: 'https://braydonhartai.com/gremlets/',
     gremletsRepo: 'https://github.com/Braydon2622/gremlets',
@@ -77,8 +79,65 @@ window.AZOKI = {
       cta: { label: 'Get Code Sea for $1', link: 'codeseaBuy' }
     },
     {
-      id: 'hearthside',
+      id: 'coderealm',
       no: '02',
+      title: 'Code Realm',
+      kind: 'Live wallpaper',
+      tagline: 'A live wallpaper of cinematic paintings, drawn entirely in code.',
+      status: 'Released', version: '1.0.0',
+      platform: 'Windows 10 & 11',
+      price: '$1',
+      accent: '#f0b25a',
+      cover: 'assets/coderealm-vigil.jpg',
+      lead: 'Code Realm turns your desktop into a living painting made of code. Ten cinematic scenes, each one a real painting redrawn in thousands of coloured letters and brought to life behind your desktop icons.',
+      stats: [
+        ['10', 'scenes, from a knight\'s vigil to a pirate broadside'],
+        ['6', 'points of paint each letter is matched against'],
+        ['30', 'frames a second'],
+        ['$1', 'once, on itch.io']
+      ],
+      groups: [
+        { h: 'Ten scenes', items: [
+          ['The Vigil', 'A knight kneeling at his sword in a meadow of wildflowers.'],
+          ['The Wanderer', 'A samurai in golden rice under a red maple.'],
+          ['The Landfall', 'A Viking chieftain on a headland as longships come up the fjord.'],
+          ['The Lantern Road', 'A hooded traveller on a wet medieval street at dusk.'],
+          ['The High Pass', 'A mounted knight in a blizzard facing a fire-breathing dragon.'],
+          ['The Last Watch', 'An archer on the battlements at dawn.'],
+          ['The White Stag', 'A glowing stag by a waterfall in a night forest.'],
+          ['The Caravan Road', 'A desert rider above a caravan at sunset.'],
+          ['The Last Stand', 'A wounded knight with a torn banner after the battle.'],
+          ['The Broadside', 'A pirate captain as his cannons fire on a burning warship.']
+        ]},
+        { h: 'Made to live on your desktop', items: [
+          ['Everything moves', 'Figures breathe, turn and shift their weight. Banners, cloaks and sails ripple. Fires flicker, cannons fire, lightning strikes, waterfalls run, clouds drift, ships ride the swell.'],
+          ['It follows your day', 'The light changes with the real clock, from dawn to noon to dusk to night, or you can pick the hour yourself. Now and then a storm rolls in.'],
+          ['It stays out of your way', 'It sits behind your icons and never takes your clicks, and it pauses whenever a maximised or full-screen window covers the desktop.'],
+          ['Yours to direct', 'A small button on the desktop, or the tray icon: scene, time of day, weather, how much everything moves, letter size, mirror, pause, start with Windows.']
+        ]}
+      ],
+      how: 'Each scene starts as a painting, made with AI assistance for this project. It is drawn into a small picture with six points for every letter on screen, bent on the way by the scene\'s tracing so skies slide, grass leans and cloth ripples. Then each letter cell looks at its six points and picks the character whose own shape matches them best, so an edge through a cell becomes a slash, an underscore or a bar rather than a grey blob.',
+      gallery: [
+        ['assets/coderealm-vigil.jpg', 'The Vigil'],
+        ['assets/coderealm-wanderer.jpg', 'The Wanderer'],
+        ['assets/coderealm-landfall.jpg', 'The Landfall'],
+        ['assets/coderealm-lantern-road.jpg', 'The Lantern Road'],
+        ['assets/coderealm-high-pass.jpg', 'The High Pass'],
+        ['assets/coderealm-last-watch.jpg', 'The Last Watch'],
+        ['assets/coderealm-white-stag.jpg', 'The White Stag'],
+        ['assets/coderealm-caravan-road.jpg', 'The Caravan Road'],
+        ['assets/coderealm-last-stand.jpg', 'The Last Stand'],
+        ['assets/coderealm-broadside.jpg', 'The Broadside']
+      ],
+      notes: [
+        'Windows 10 or 11. One download, no installer: unzip and double-click.',
+        'Code Realm is an independent app without a paid code-signing certificate, so the first time you run it Windows may say "Windows protected your PC". Click More info, then Run anyway.'
+      ],
+      cta: { label: 'Get Code Realm for $1', link: 'coderealmBuy' }
+    },
+    {
+      id: 'hearthside',
+      no: '03',
       title: 'Hearthside',
       kind: 'Live wallpaper',
       tagline: 'A hand-painted village that rearranges itself around your icons.',
@@ -116,32 +175,45 @@ window.AZOKI = {
     },
     {
       id: 'desktop-reef',
-      no: '03',
+      no: '04',
       title: 'Desktop Reef',
       kind: 'Live wallpaper',
-      tagline: 'A living tropical reef that grows around your desktop icons.',
-      status: 'In development', version: '0.1.0',
-      platform: 'Windows',
-      price: 'Not out yet',
+      tagline: 'A living tropical lagoon that grows around your desktop icons.',
+      status: 'Released', version: '1.0.2',
+      platform: 'Windows 10 & 11',
+      price: '$1',
       accent: '#3fe6cf',
       cover: 'assets/reef-wide.jpg',
-      lead: 'The bright one. A shallow tropical lagoon seen from above: your icons sit on islands of sand ringed with palms, and coral gardens grow in the water between them while fish, an octopus and the odd kayak go about their day.',
+      lead: 'The bright one. A shallow tropical lagoon seen from above: your icons sit on islands of sand ringed with palms, and coral gardens grow in the water between them while fish, sharks, turtles and people in boats go about their day.',
       stats: [
-        ['0.1.0', 'the current build'],
-        ['3rd', 'wallpaper in the family']
+        ['1.0.2', 'the current build'],
+        ['4%', 'of a mid-range CPU, about'],
+        ['Live', 'weather where you are, from open-meteo.com'],
+        ['$1', 'once, on itch.io']
       ],
-      groups: [],
+      groups: [
+        { h: 'A lagoon built around your desktop', items: [
+          ['Islands under your icons', 'Every icon sits on its own island of sand, and the reef grows in the water around them.'],
+          ['Your files shape the scene', 'Jetties, a lighthouse and more appear from what is on your desktop.'],
+          ['Life in the water', 'Fish, sharks, turtles and people in boats. Click an animal to find out what it is.'],
+          ['Real weather', 'The sky over the lagoon follows the weather where you live.'],
+          ['The whirlpool', 'Drag a file into it and the file goes to the Recycle Bin.']
+        ]}
+      ],
       how: '',
       gallery: [
         ['assets/reef-wide.jpg', 'Coral gardens in the shallows'],
         ['assets/reef-tall.jpg', 'A reef wall']
       ],
-      notes: ['Still being built. Leave your email on the home page to hear when it ships.'],
-      cta: null
+      notes: [
+        'Windows 10 or 11.',
+        'Desktop Reef is an independent app without a paid code-signing certificate, so the first time you run it Windows may say "Windows protected your PC". Click More info, then Run anyway.'
+      ],
+      cta: { label: 'Get Desktop Reef for $1', link: 'reefBuy' }
     },
     {
       id: 'codedlens',
-      no: '04',
+      no: '05',
       title: 'Coded Lens',
       kind: 'Web tool',
       tagline: 'Turn any video into ASCII art.',
@@ -172,7 +244,7 @@ window.AZOKI = {
     },
     {
       id: 'gremlets',
-      no: '05',
+      no: '06',
       title: 'Gremlets',
       kind: 'Desktop companions',
       tagline: 'Tiny pixel creatures that live on your Mac desktop.',
@@ -203,7 +275,7 @@ window.AZOKI = {
     },
     {
       id: 'winterville',
-      no: '06',
+      no: '07',
       title: 'Winterville',
       kind: 'Desktop game',
       tagline: 'A pixel village that spends the winter on your desktop.',
