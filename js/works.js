@@ -235,6 +235,10 @@ window.AZOKI = {
           ['Upload', 'Pick a video or a photo, or drag one onto the page.'],
           ['Tune', 'Set how many letters cross the frame, which characters paint brightness, the palette, edges, glow and sparkle.'],
           ['Record', 'It plays the clip once in real time and hands you a video to download.']
+        ]},
+        { h: 'On paper', items: [
+          ['The collection', 'Nine Coded Lens prints, from Starry Night.exe to The Great Wave in blueprint, are at Azoki Market.'],
+          ['Your own', 'Export a poster-sized picture under Print, send it in, and Azoki Market prints it.']
         ]}
       ],
       how: '',
